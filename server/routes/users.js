@@ -1,9 +1,17 @@
 var express = require('express');
-var router = express.Router();
+import user from '../controller/user'
+const router = express.Router();
 
-/* GET users listing. */
-router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
-});
 
-module.exports = router;
+// 로그인
+router.post('/login', user.login)
+
+
+// 회원가입
+router.post('/signUp', user.signUp)
+
+
+// 프로필
+router.get('/profile/:userId', user.profile)
+
+export default router

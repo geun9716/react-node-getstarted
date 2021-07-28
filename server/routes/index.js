@@ -1,15 +1,17 @@
-const express = require('express');
-const router = express.Router();
-
-const main = require('./main.js');
-const user = require('./users.js');
-
-router.use('/main', main);
-router.use('/user', user);
+var express = require('express');
+var router = express.Router();
 
 
-router.get('/', function(req, res){
-    res.send('This is Root');
-})
+import newsRouter from './news.js';
+import clusterRouter from './clusters.js';
+
+// router.use('/user', users);
+router.use('/news', newsRouter);
+router.use('/cluster', clusterRouter);
+
+/* GET home page. */
+router.get('/', function(req, res, next) {
+  res.render('index', { title: 'Express' });
+});
 
 module.exports = router;
